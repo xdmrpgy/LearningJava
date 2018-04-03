@@ -11,13 +11,8 @@ public class Employee implements Cloneable{
         this.salary = salary;
     }
 
-    public Employee clone() throws CloneNotSupportedException{
-        //call Object.clone()
-        Employee clone = (Employee) super.clone();
-
-        //clone mutable fields
-        clone.hireDay = (Date) hireDay.clone();
-        return clone;
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setHireDay(int year,int month,int day){
@@ -37,5 +32,19 @@ public class Employee implements Cloneable{
                 ", salary=" + salary +
                 ", hireDay=" + hireDay +
                 '}';
+    }
+
+    @Override
+    public Employee clone() throws CloneNotSupportedException{
+        //call Object.clone()
+        Employee clone = (Employee) super.clone();
+
+        //clone mutable fields
+        clone.hireDay = (Date) hireDay.clone();
+        return clone;
+    }
+
+    public Employee shadowClone() throws CloneNotSupportedException {
+        return (Employee) super.clone();
     }
 }
